@@ -8,8 +8,8 @@ interface BlockState {
   adjacentMines: number
 }
 
-const WIDTH = 5
-const HEIGHT = 5
+const WIDTH = 10
+const HEIGHT = 10
 const state = reactive(
   Array.from({ length: HEIGHT }, (_, y) =>
     Array.from({ length: WIDTH },
@@ -84,7 +84,7 @@ const directions = [
 ]
 
 let mineGenerated = false
-const dev = true
+const dev = false
 
 function onClick(block: BlockState) {
   if (!mineGenerated) {
@@ -135,7 +135,7 @@ function getSiblings(block: BlockState) {
         @click="onClick(block)"
       >
         <template v-if="block.revealed || dev">
-          <div v-if="block.mine" i-carbon-continue />
+          <div v-if="block.mine" i-mdi-mine />
           <div v-else>
             {{ block.adjacentMines }}
           </div>
